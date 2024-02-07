@@ -7,8 +7,7 @@ const Contact = () => {
             Contact Us
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-            gentrify.
+          If you have any questions or inquiries, please feel free to reach out to us using the form below:
           </p>
         </div>
         <div className="lg:w-1/2 md:w-2/3 mx-auto">
@@ -62,18 +61,18 @@ const Contact = () => {
               </div>
             </div>
             <div className="p-2 w-full">
-              <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                Button
+              <button className="flex mx-auto text-white bg-green-900 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-lg">
+                Send
               </button>
             </div>
-            <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+            {/*<div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
               <a className="text-indigo-500">example@email.com</a>
               <p className="leading-normal my-5">
                 49 Smith St.
                 <br />
                 Saint Cloud, MN 56301
               </p>
-              <span className="inline-flex">
+              {/*<span className="inline-flex">
                 <a className="text-gray-500">
                   <svg
                     fill="currentColor"
@@ -125,7 +124,7 @@ const Contact = () => {
                   </svg>
                 </a>
               </span>
-            </div>
+            </div>*/}
           </div>
         </div>
       </div>
