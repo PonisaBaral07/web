@@ -10,8 +10,8 @@ export default function Home() {
     <div>
       <Navbar/>
       <Hero/>
-      <About/>
-      <Contact/>
+      <About id ="about"/>
+      <Contact id = "contact"/>
       <Footer/>
     </div>
   )
