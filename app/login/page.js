@@ -1,8 +1,13 @@
+'use client'
 import Logo from "@/components/logo";
+import { useState } from "react";
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
-    <div>
+    <form>
+      
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <Logo/>
@@ -91,7 +96,7 @@ const Login = () => {
           </div>
         </div>
       </section>
-    </div>
+    </form>
   );
 };
 

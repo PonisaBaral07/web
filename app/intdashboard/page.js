@@ -1,3 +1,4 @@
+
 import Footer from "@/components/footer";
 import Logo from "@/components/logo";
 
@@ -40,7 +41,7 @@ const Intdashboard = () => {
         {/* main section of the dashbaord  */}
         <div className="flex flex-col bg-white w-2/3 rounded-md h-[60vh] p-4">
             {/* button part */}
-          <div className="flex gap-8 mb-8">
+          <div className="flex gap-8 mb-8 ml-8">
             <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">info</div>
             <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">Invested Idea</div>
             <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">Idea Liked</div>
