@@ -1,6 +1,7 @@
+
 import Logo from "@/components/logo";
 
-const Signup = () => {
+const Sign = () => {
   return (
     <div>
       <section className="bg-gray-50 dark:bg-gray-900 h-2 ">
@@ -24,7 +25,7 @@ const Signup = () => {
                     name="fname"
                     id="fname"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Sugam "
+                    placeholder="name "
                     required
                   />
                 </div>
@@ -40,7 +41,7 @@ const Signup = () => {
                     name="lname"
                     id="lname"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="gelal "
+                    placeholder="surname "
                     required
                   />
                 </div>
@@ -73,7 +74,7 @@ const Signup = () => {
                     name="dob"
                     id="dob"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Sugam "
+                    placeholder="name "
                     required
                   />
                 </div>
@@ -83,14 +84,14 @@ const Signup = () => {
                     htmlFor="company"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Name of Your Company
+                    Qualification
                   </label>
                   <input
                     type="text"
-                    name="company"
-                    id="company"
+                    name="qualification"
+                    id="qualification"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Company "
+                    placeholder="Qualification "
                     required
                   />
                 </div>
@@ -98,21 +99,21 @@ const Signup = () => {
 
                 <div>
                   <label
-                    htmlFor="job"
+                    htmlFor="university"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Job Position
+                    University
                   </label>
                   <input
                     type="text"
-                    name="job"
-                    id="job"
+                    name="university"
+                    id="university"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Job Position "
+                    placeholder="university "
                     required
                   />
                 </div>
-
+  
 
                 <div>
                   <label
@@ -202,4 +203,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Sign;
