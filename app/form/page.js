@@ -1,9 +1,44 @@
+'use client'
 import Entform from "@/components/entform";
 import Logo from "@/components/logo";
+import { useState } from "react";
 
 const EForm = () => {
+  const [formData, setFormData] =useState("")
+
+  const onEdit = (e)=>
+  {
+    const {name, value} = e.target;
+    setFormData(prevState=> (
+      {
+        ...prevState,
+        [name] : value
+      }
+    )
+      )
+  }
+
+  const formHandler = async(e) =>
+  {
+    e.preventDefault();
+    console.log(formData);
+    try{
+      const response = await fetch('/api/form',
+      {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(formData)
+      }
+
+      )
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+
   return (
-    <form>
+    <form onSubmit={formHandler}>
         <div className="flex justify-center"><Logo/></div>
         <div className="text-center text-gray-400">Your Success is our algorithm</div>
         
@@ -17,6 +52,8 @@ const EForm = () => {
           <textarea
             name="title"
             rows="3"
+            value={formData.name}
+            onChange={onEdit}
             required
             className="border border-green-800 rounded-md resize-none font-extrabold p-2 focus:outline-none focus:ring focus:ring-green-950"
           />
@@ -33,6 +70,8 @@ const EForm = () => {
             name="category"
             rows="3"
             required
+            value={formData.name}
+            onChange={onEdit}
             className="border border-green-800 rounded-md resize-none  p-2 focus:outline-none focus:ring focus:ring-green-950"
           />
         </div>
@@ -47,6 +86,8 @@ const EForm = () => {
             type="number"
             name="nopatner"
             rows="3"
+            value={formData.name}
+            onChange={onEdit}
             required
             className="border border-green-800 rounded-md resize-none  p-2 focus:outline-none focus:ring focus:ring-green-950"
           />
@@ -62,8 +103,10 @@ const EForm = () => {
             </label>
             <input
               type="text"
-              name="nopatner"
+              name="patnername"
               rows="3"
+              value={formData.name}
+            onChange={onEdit}
               required
               className="border border-green-800 rounded-md resize-none p-2 focus:outline-none focus:ring focus:ring-green-950"
             />
@@ -74,8 +117,10 @@ const EForm = () => {
             </label>
             <input
               type="text"
-              name="nopatner"
+              name="patneremail"
               rows="3"
+              value={formData.name}
+            onChange={onEdit}
               required
               className="border border-green-800 rounded-md resize-none  p-2 focus:outline-none focus:ring focus:ring-green-950"
             />
@@ -86,8 +131,10 @@ const EForm = () => {
             </label>
             <input
               type="text"
-              name="nopatner"
+              name="patnerqual"
               rows="3"
+              value={formData.name}
+            onChange={onEdit}
               required
               className="border border-green-800 rounded-md resize-none p-2 focus:outline-none focus:ring focus:ring-green-950"
             />
@@ -98,8 +145,10 @@ const EForm = () => {
             </label>
             <input
               type="text"
-              name="nopatner"
+              name="patnerphone"
               rows="3"
+              value={formData.name}
+            onChange={onEdit}
               required
               className="border border-green-800 rounded-md resize-none  p-2 focus:outline-none focus:ring focus:ring-green-950"
             />
@@ -109,7 +158,9 @@ const EForm = () => {
       <label htmlFor="nopatner" className="font-bold text-lg">
         Project Summary
       </label>
-      <Entform className="" />
+      <Entform className=""
+      value={formData.name}
+      onChange={onEdit} />
       {/* pricing */}
       <div className="flex flex-col">
         <label htmlFor="price" className="font-bold text-lg">
@@ -122,6 +173,8 @@ const EForm = () => {
           <input
             type="number"
             name="price"
+            value={formData.name}
+            onChange={onEdit}
             className="bg-grey-lighter text-grey-darker py-2  rounded text-grey-darkest border border-grey-lighter rounded-l-none "
           />
         </div>
@@ -135,6 +188,8 @@ const EForm = () => {
         <input
           className="p-2 w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
           id="file_input"
+          value={formData.name}
+            onChange={onEdit}
           type="file"
         />
       </div>

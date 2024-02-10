@@ -3,10 +3,11 @@ import Logo from "@/components/logo";
 const Signup = () => {
   return (
     <div>
-      <section className="bg-gray-50 dark:bg-gray-900 h-2 ">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <Logo/>
-          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <section className="bg-gray-50 h-full overflow-auto">
+        <div className="flex justify-center">
+        <div className="block items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <div className="flex justify-center"><Logo/></div>
+          <div className="w-[150%] bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create an account
@@ -196,6 +197,7 @@ const Signup = () => {
               </form>
             </div>
           </div>
+        </div>
         </div>
       </section>
     </div>
