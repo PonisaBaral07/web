@@ -5,17 +5,16 @@ const About = () => {
         <h1 className="title-font text-center sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
             About us
           </h1>
-      <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-
+      <div className="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">
+      {/* <div className="container mx-auto custom-container flex px-5 py-24 md:flex-row flex-col items-center"> */}
+  
       
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
         <picture>
           <img
             className="object-cover object-center rounded"
             alt="about"
-            height={567}
-            width={284}
-            src="investo/public/five.jpg"
+            src="/four.jpg"
           />
           </picture>
         </div>
