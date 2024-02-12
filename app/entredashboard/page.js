@@ -34,17 +34,17 @@ const Entdashboard = () => {
           {/* other profile details */}
           <div className="font-bold">Email : <span className="font-normal">sampadatandan127@gmail.com</span></div>
           <div className="font-bold">Phone : <span className="font-normal">+977 9841724242</span></div>
-          <div className="font-bold">Job : <span className="font-normal">CEO</span></div>
-          <div className="font-bold">Company : <span className="font-normal">Investor hub</span></div>
+          {/* <div className="font-bold">Job : <span className="font-normal">CEO</span></div> */}
+          {/* <div className="font-bold">Company : <span className="font-normal">Investor hub</span></div> */}
           
         </div>
         {/* main section of the dashbaord  */}
         <div className="flex flex-col bg-white w-2/3 rounded-md h-[60vh] p-4">
             {/* button part */}
           <div className="flex gap-8 mb-8 ml-8">
-            <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">Previous Idea </div>
-            <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">Idea Pitch</div>
-            <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">Interested Enterpreneurs</div>
+            <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">Idea info </div>
+            <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">Uploaded idea</div>
+            <div className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">Add idea</div>
           </div>
           {/* content part */}
           <div className="">
