@@ -3,11 +3,11 @@ const entuserSchema = new Schema(
     {
         fname : String,
         lname : String,
-        email :{type: String, required: true, unique: true},
+        email : String,
         dob: Date,
         qualification: String,
         university: String,
-        password : {type: String, required: true}
+        password : String,
     }
 )
 const ENTUserTable = mongoose.models.ENTUserTable || mongoose.model("ENTUserTable",entuserSchema)

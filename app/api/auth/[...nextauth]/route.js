@@ -1,5 +1,8 @@
+import connectDB from "@/lib/mongodb";
+import ENTUserTable from "@/models/entuser";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
+
 
 const handler = NextAuth(
     {
@@ -12,16 +15,18 @@ const handler = NextAuth(
                         email : { label: 'email', type: 'email'},
                         password : { label: 'password', type: 'password'}
                     },
-                    async authorize (credentials, req)
+                    async authorize(credentials, req)
                     {
                         const {email, password} = credentials;
-                        if(email === 'a@g.com' && password === '123')
-                        {
-                            console.log(email);
-                            console.log(password);
-                            return email;
+                        await connectDB();
+                        const user = await ENTUserTable.findOne({email: email, password: password})
+                        console.log(user);
+                        if (user) {
+                            return user;
+                        } else {
+                            console.log('No user found with provided credentials');
+                            return null; 
                         }
-                        return null;
                     }
                 }
 
@@ -29,8 +34,28 @@ const handler = NextAuth(
         ],
         pages:{
             signIn : '/login',
+            signOut : '/api/auth/signout',
         },
-        session: {},
+        session: {
+            strategy : "jwt",
+            maxAge: 30 * 24 * 60 * 60, // 30 days
+        },
+        callbacks: {
+            async jwt(token, user) {
+                if (user) {
+                    console.log(user);
+                token.id = user.id; // Add user's MongoDB ID to the token
+                }
+                return token;
+            },
+            async session(session, token) {
+                if (token && token.id) {
+                    console.log("the user data is ");
+                    session.user.id = token.id; // Add user's MongoDB ID to the session
+                }
+                return session;
+            },
+        },
 
     }
 );

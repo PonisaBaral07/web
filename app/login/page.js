@@ -13,11 +13,11 @@ const Login = () => {
   const submitHandler = async(e)=>
   {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
+    // console.log(email);
+    // console.log(password);
     const login = await signIn('credentials', { email: email, password: password, redirect: false });
     if (login.ok) {
-      router.push('/');
+      router.push('/entredashboard');
     }
     else{
       toast.error('Login failed');

@@ -14,6 +14,7 @@ const Sign = () => {
     confirmPassword: ''
   });
   const [passwordMatch, setPasswordMatch] = useState(true);
+  
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -23,9 +24,23 @@ const Sign = () => {
       [name]: value
     }));
   };
+  const removeCircularReferences = (object) => {
+    const seen = new WeakSet();
+    const replacer = (key, value) => {
+        if (typeof value === 'object' && value !== null) {
+            if (seen.has(value)) {
+                return; // If circular reference is found, return undefined
+            }
+            seen.add(value);
+        }
+        return value;
+    };
+    return JSON.stringify(object, replacer);
+};
+
 
   // Handle form submission
-  const submitHandle = (e) => {
+  const submitHandle = async (e) => {
     e.preventDefault();
     if(formData.password !== formData.confirmPassword)
     {
@@ -34,6 +49,19 @@ const Sign = () => {
       return;
     } 
     console.log(formData);
+    try{
+      const jsonString = removeCircularReferences(formData);
+      console.log(jsonString);
+      const response = await fetch('/api/entuser',{
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: jsonString
+      });
+
+    }
+    catch(e){
+      console.log(e);
+    }
   };
   return (
     <div>
@@ -174,7 +202,7 @@ const Sign = () => {
                       name="password"
                       id="password"
                       placeholder="••••••••"
-                      value = {formData.name}
+                      value = {formData.password}
                       onChange={handleChange}
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       required

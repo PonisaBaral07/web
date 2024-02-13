@@ -1,6 +1,13 @@
+'use client'
+import { useRouter } from "next/navigation"
 
 
 const Hero = () => {
+  const router = useRouter();
+  const clicked = ()=>
+  {
+    return router.push('/getstarted');
+  }
   return (
    <section className="text-gray-600 body-font">
   <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -10,7 +17,7 @@ const Hero = () => {
       </h1>
       <p className="mb-8 leading-relaxed">Discover groundbreaking ideas. Welcome to InvestorHub – your gateway to innovation and investment. We're on a mission to connect visionary entrepreneurs with forward-thinking investors, fueling the growth of groundbreaking ideas. Discover, invest, and collaborate with like-minded innovators in our vibrant community. Whether you're an entrepreneur seeking support or an investor looking for the next big opportunity, InvestorHub is your platform for success. Join us today and be part of shaping the future of innovation and entrepreneurship.</p>
       <div className="flex justify-center">
-        <button className="inline-flex text-white bg-green-800 border-0 py-2 px-6 focus:outline-none hover:bg-green-900 rounded text-lg">Get Started</button>
+        <button className="inline-flex text-white bg-green-800 border-0 py-2 px-6 focus:outline-none hover:bg-green-900 rounded text-lg" onClick={clicked}>Get Started</button>
       </div>
     </div>
     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
