@@ -1,8 +1,8 @@
 import connectDB from "@/lib/mongodb";
 import ENTUserTable from "@/models/entuser";
+import INTuser from "@/models/intuser";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
-
 
 const handler = NextAuth(
     {
@@ -20,10 +20,14 @@ const handler = NextAuth(
                         const {email, password} = credentials;
                         await connectDB();
                         const user = await ENTUserTable.findOne({email: email, password: password})
+                        const user2 = await INTuser.findOne({email:email, password:password})
                         console.log(user);
                         if (user) {
                             return user;
-                        } else {
+                        }else if (user2) {
+                            return user2;
+                        }
+                        else {
                             console.log('No user found with provided credentials');
                             return null; 
                         }
