@@ -90,7 +90,7 @@ const Entdashboard = () => {
             {/* content part */}
             {/* info part */}
             <div className="">
-              <div className="bg-gray-100 p-4 rounded-md flex justify-center items-center h-[45vh]">
+              <div className="bg-gray-100 p-4 rounded-md flex justify-center items-center h-[45vh] overflow-x-scroll">
                 {toggle===2 ? <Card/> :<Entinfo/>}
               </div>
             </div>

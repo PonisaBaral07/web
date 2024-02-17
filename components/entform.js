@@ -4,9 +4,9 @@ import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 
 
-const Entform = ({value, setValue}) => {
+const Entform = ({name, value, setValue}) => {
 
-    return <ReactQuill theme="snow" value={value} onChange={setValue} className=""/>;
+    return <ReactQuill theme="snow"  name={name} value={value} onChange={setValue} className=""/>;
 }
 
 export default Entform

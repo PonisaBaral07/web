@@ -17,11 +17,12 @@ const EForm = () => {
     )
       )
   }
+  
 
   const formHandler = async(e) =>
   {
     e.preventDefault();
-    console.log(formData);
+    console.log('the form data is',formData);
     try{
       const response = await fetch('/api/form',
       {
@@ -155,12 +156,13 @@ const EForm = () => {
           </div>
         </div>
       </div>
-      <label htmlFor="nopatner" className="font-bold text-lg">
-        Project Summary
-      </label>
-      <Entform className=""
-      value={formData.name}
-      onChange={onEdit} />
+      {/* project Summary */}
+      <label htmlFor="projectSummary" className="font-bold text-lg">Project Summary</label>
+        <Entform
+          name="projectSummary"
+          value={formData.projectSummary}
+          setValue={value => setFormData(prevState => ({ ...prevState, projectSummary: value }))}
+        />
       {/* pricing */}
       <div className="flex flex-col">
         <label htmlFor="price" className="font-bold text-lg">

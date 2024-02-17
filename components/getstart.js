@@ -13,8 +13,8 @@ const Getstart = () => {
   return (
     <div className="border border-green-800 rounded-md p-8 ">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-48">
-        <div className="shadow-lg flex flex-col p-2 rounded-md w-[10em]">
-          <div className="flex justify-between">
+        <div className="shadow-lg flex flex-col p-4 rounded-md w-[10em]">
+          <div className="flex justify-between p-4 ">
             <IoMdBriefcase />
             <input type="radio" name="usertype" value="investor" onChange={handleRadioChange} />
           </div>
@@ -24,8 +24,8 @@ const Getstart = () => {
           </div>
         </div>
 
-        <div className="shadow-lg flex flex-col p-2 rounded-md w-[10em]">
-          <div className="flex justify-between">
+        <div className="shadow-lg flex flex-col p-4 rounded-md w-[10em]">
+          <div className="flex justify-between p-4">
             <IoMdWallet />
             <input type="radio" name="usertype" value="entrepreneur" onChange={handleRadioChange} />
           </div>
