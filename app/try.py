@@ -66,17 +66,7 @@ def profile_to_vector(profile):
 
     return vector
 
-    vector = np.zeros((1, len(profile) - 1))
-    features = ['investment_goal', 'business_interest', 'past_experiences', 'geographical_location']
-    for i, feature in enumerate(features):
-        if isinstance(profile[feature], list):
-            for interest in profile[feature]:
-                index = features.index(feature)
-                vector[0, index] = 1
-        else:
-            index = features.index(feature)
-            vector[0, index] = 1
-    return vector
+    
 
 # Calculate cosine similarity between investor and entrepreneur profiles
 similarities = {}

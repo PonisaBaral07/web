@@ -5,6 +5,7 @@ import{signIn} from "next-auth/react"
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
 
+
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -13,8 +14,8 @@ const Login = () => {
   const submitHandler = async(e)=>
   {
     e.preventDefault();
-    // console.log(email);
-    // console.log(password);
+    console.log(email);
+    console.log(password);
     const login = await signIn('credentials', { email: email, password: password, redirect: false });
     if (login.ok) {
       router.push('/entredashboard');

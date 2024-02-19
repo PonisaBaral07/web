@@ -52,7 +52,7 @@ export const authOption = {
     async jwt(token, user) {
       if (user) {
         console.log("JWT callback - User:", user);
-        token.id = user.id; // Add user's MongoDB ID to the token
+        token.id = user._id; // Add user's MongoDB ID to the token
       }
       return token;
     },
