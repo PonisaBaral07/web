@@ -13,6 +13,7 @@
     "@react-pdf-viewer/default-layout": "^3.12.0",
     "@yaireo/tagify": "^3.7.0",
     "canvas": "^2.11.2",
+    "jsonwebtoken": "^9.0.2",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",
     "pdfjs-dist": "^3.4.120",

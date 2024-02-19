@@ -2,6 +2,7 @@
 import Card from "@/components/card";
 import Entinfo from "@/components/entinfo";
 import Footer from "@/components/footer";
+import Loader from "@/components/loader";
 import Logo from "@/components/logo";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const Entdashboard = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
   const [toggle, setToggle] = useState("1");
- 
+ console.log(JSON.stringify(session));
 
   if (status === "authenticated") {
     const onClick2 = () => {
@@ -47,8 +48,9 @@ const Entdashboard = () => {
                 alt="Image Description"
               />
               <div className="font-bold text-lg text-center">
-                Hello {session?.user?.email}
+              Hello
               </div>
+              
               <div className="p-1 border border-green-900 rounded-lg text-sm cursor-pointer hover:font-bold mb-2">
                 Edit
               </div>
@@ -101,7 +103,7 @@ const Entdashboard = () => {
       </div>
     );
   } else if (status === "loading") {
-    return <div className="">loading</div>;
+    return <div className=""><Loader/></div>;
   } else {
     router.push("/login");
   }
