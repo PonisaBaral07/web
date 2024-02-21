@@ -8,12 +8,10 @@ export  async function POST(req, res) {
       try{
       await connectDB();
       await Contacts.create({name, email, message});
-      return NextResponse.json(
-        {
-            message: "Data sent successfully",
-            success: true,
-        }
-    )
+      return NextResponse.json({
+        message: "Data sent successfully",
+        success: true,
+    });
       }
       catch(err) {
         console.log(err);

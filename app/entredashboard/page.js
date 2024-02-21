@@ -1,28 +1,13 @@
-"use client";
-import Card from "@/components/card";
-import Entinfo from "@/components/entinfo";
+
+import { GetUserId } from "@/components/cookie";
+import EntdashboardContent from "@/components/entdashboardcontent";
 import Footer from "@/components/footer";
-import Loader from "@/components/loader";
 import Logo from "@/components/logo";
-import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const Entdashboard = () => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-  const [toggle, setToggle] = useState("1");
- console.log(JSON.stringify(session));
-
-  if (status === "authenticated") {
-    const onClick2 = () => {
-      setToggle(2); // Use setToggle to update state
-    };
+  const userId = GetUserId();
   
-    const onClick1 = () => {
-      setToggle(1); // Use setToggle to update state
-    };
+
     return (
 
       <div>
@@ -66,47 +51,22 @@ const Entdashboard = () => {
             {/* <div className="font-bold">Job : <span className="font-normal">CEO</span></div> */}
             {/* <div className="font-bold">Company : <span className="font-normal">Investor hub</span></div> */}
 
-            <button
+            {/* <button
               onClick={signOut}
               className="bg-green-800 p-2 rounded-md text-white font-bold"
             >
               signout
-            </button>
+            </button> */}
           </div>
           {/* main section of the dashbaord  */}
           <div className="flex flex-col bg-white w-2/3 rounded-md h-[60vh] p-4">
-            {/* button part */}
-            <div className="flex gap-8 mb-8 ml-8">
-              <button onClick ={onClick1} className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">
-                Idea info{" "}
-              </button>
-              <button onClick={onClick2} className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">
-                Uploaded idea
-              </button>
-              <Link href="/form">
-                <button className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">
-                  Add idea
-                </button>
-              </Link>
-            </div>
-            {/* content part */}
-            {/* info part */}
-            <div className="">
-              <div className="bg-gray-100 p-4 rounded-md flex justify-center items-center h-[45vh] overflow-x-scroll">
-                {toggle===2 ? <Card/> :<Entinfo/>}
-              </div>
-            </div>
+            <EntdashboardContent/>
           </div>
         </div>
 
         <Footer />
       </div>
     );
-  } else if (status === "loading") {
-    return <div className=""><Loader/></div>;
-  } else {
-    router.push("/login");
-  }
 };
 
 export default Entdashboard;

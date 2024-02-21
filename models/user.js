@@ -1,6 +1,10 @@
 import mongoose, {Schema} from "mongoose";
 const userSchema = new Schema({
-    name: {
+    fname: {
+      type: String,
+      required: true
+    },
+    lname: {
       type: String,
       required: true
     },
@@ -8,32 +12,43 @@ const userSchema = new Schema({
       type: String,
       required: true,
       unique: true,
-      lowercase: true, // Converts email to lowercase before saving
-      trim: true // Removes whitespace from the beginning and end of email
+      lowercase: true, 
+      trim: true 
     },
-    phone: {
-      type: String,
-      required: true,
-      validate: {
-        validator: function(v) {
-          return /\d{3}-\d{3}-\d{4}/.test(v); // Validates phone number format (e.g., 123-456-7890)
-        },
-        message: props => `${props.value} is not a valid phone number!`
-      }
-    },
-    dateOfBirth: {
+    dob: {
       type: Date,
+      required: true
+    },
+    company: {
+      type: String,
+      required: false
+    },
+    job: {
+      type: String,
+      required: false
+    },
+    qualification: {
+      type: String,
+      required: false
+    },
+    university: {
+      type: String,
+      required: false
+    },
+    
+    password: {
+      type: String,
       required: true
     },
     role: {
       type: String,
-      enum: ['entrepreneur', 'investor'], // Specifies allowed user roles
+      enum: ['entrepreneur', 'investor'], 
       required: true
     }
   });
   
   // Define the Idea schema
-  const ideaSchema = new mongoose.Schema({
+  const ideaSchema = new Schema({
     title: {
       type: String,
       required: true
@@ -56,7 +71,6 @@ const userSchema = new Schema({
   // Define the User model
   const User = mongoose.models.User || mongoose.model('User', userSchema);
   
-  // Define the Idea model
-  const Idea =mongoose.models.Idea || mongoose.model('Idea', ideaSchema);
   
-  module.exports = { User, Idea };
+  
+export default User;

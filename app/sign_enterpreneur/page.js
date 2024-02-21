@@ -11,7 +11,9 @@ const Sign = () => {
     qualification: '',
     university: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    role: 'entrepreneur',
+    
   });
   const [passwordMatch, setPasswordMatch] = useState(true);
   
@@ -52,7 +54,7 @@ const Sign = () => {
     try{
       const jsonString = removeCircularReferences(formData);
       console.log(jsonString);
-      const response = await fetch('/api/entuser',{
+      const response = await fetch('/api/user',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: jsonString
@@ -231,6 +233,7 @@ const Sign = () => {
                   {!passwordMatch && (
                         <p className="text-red-500 text-sm">Passwords do not match</p>
                       )}
+                      <div className=""></div>
                   <div className="flex items-start">
                     <div className="flex items-center h-5">
                       <input
