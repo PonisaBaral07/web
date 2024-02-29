@@ -1,23 +1,21 @@
-import mongoose, {Schema} from "mongoose";
+import { Timestamp } from "mongodb";
+import mongoose, { Schema } from "mongoose";
 const ideaSchema = new Schema({
-    title: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true
-    },
-    createdBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    },
-    likes: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
-    }]
-  });
- 
-  const Idea =mongoose.models.Idea || mongoose.model('Idea', ideaSchema);
-  export default Idea;
+  createdBy: String,
+  title: String,
+  category: String,
+  nopatner: String,
+  patnername: String,
+  patneremail: String,
+  patnerqual: String,
+  patnerphone: String,
+  projectsummary: String,
+  price: String,
+  file: String,
+},
+{
+  timestamps: true,
+});
+
+const Idea = mongoose.models.Idea || mongoose.model("Idea", ideaSchema);
+export default Idea;

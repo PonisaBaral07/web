@@ -4,12 +4,16 @@ import EntdashboardContent from "@/components/entdashboardcontent";
 import Footer from "@/components/footer";
 import Logo from "@/components/logo";
 
-const Entdashboard = () => {
+const Entdashboard = async () => {
   const userId = GetUserId();
+  console.log(`the user is is ${userId}`);
   
+    const response = await fetch(`http://localhost:3000/api/${userId}`);
+    const json = await response.json();
+    const responseIdeas = await fetch(`http://localhost:3000/api/ideas/${userId}`);
+    const responseIdea = await responseIdeas.json();
 
     return (
-
       <div>
         {/* logo */}
         <div className="ml-4 mt-2">
@@ -33,7 +37,7 @@ const Entdashboard = () => {
                 alt="Image Description"
               />
               <div className="font-bold text-lg text-center">
-              Hello
+              {json.foundUser.fname}{" "} {json.foundUser.lname}
               </div>
               
               <div className="p-1 border border-green-900 rounded-lg text-sm cursor-pointer hover:font-bold mb-2">
@@ -43,10 +47,13 @@ const Entdashboard = () => {
             {/* other profile details */}
             <div className="font-bold">
               Email :{" "}
-              <span className="font-normal">sampadatandan127@gmail.com</span>
+              <span className="font-normal">{json.foundUser.email}</span>
             </div>
             <div className="font-bold">
-              Phone : <span className="font-normal">+977 9841724242</span>
+              Qualification : <span className="font-normal">{json.foundUser.qualification}</span>
+            </div>
+            <div className="font-bold">
+              University : <span className="font-normal">{json.foundUser.university}</span>
             </div>
             {/* <div className="font-bold">Job : <span className="font-normal">CEO</span></div> */}
             {/* <div className="font-bold">Company : <span className="font-normal">Investor hub</span></div> */}
@@ -60,7 +67,7 @@ const Entdashboard = () => {
           </div>
           {/* main section of the dashbaord  */}
           <div className="flex flex-col bg-white w-2/3 rounded-md h-[60vh] p-4">
-            <EntdashboardContent/>
+            <EntdashboardContent userId={userId} ideaDetails ={responseIdea}/>
           </div>
         </div>
 

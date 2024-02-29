@@ -3,7 +3,9 @@ import { useState } from "react";
 import Card from "./card";
 import Entinfo from "./entinfo";
 import Link from "next/link";
-const EntdashboardContent = () => {
+const EntdashboardContent = ({userId, ideaDetails}) => {
+  const ideaByuserId = ideaDetails.foundIdea;
+  console.log(ideaByuserId);
   const [toggle, setToggle] = useState("1");
  
     const onClick2 = () => {
@@ -22,7 +24,10 @@ const EntdashboardContent = () => {
       <button onClick={onClick2} className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">
         Uploaded idea
       </button>
-      <Link href="/form">
+      <Link href={{
+        pathname: "/form",
+        query: {userId: userId}
+      }}>
         <button className="bg-green-600 w-[150px] text-white font-bold p-2 rounded-md text-center">
           Add idea
         </button>
@@ -32,7 +37,7 @@ const EntdashboardContent = () => {
     {/* info part */}
     <div className="">
       <div className="bg-gray-100 p-4 rounded-md flex justify-center items-center h-[45vh] overflow-x-scroll">
-        {toggle===2 ? <Card/> :<Entinfo/>}
+        {toggle===2 ? <Card ideaDetail={ideaByuserId} /> :<Entinfo/>}
       </div>
     </div></div>
   )

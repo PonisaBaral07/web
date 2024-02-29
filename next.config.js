@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
-
-const { webpack } = require('next/dist/compiled/webpack/webpack');
+const path = require('path');
 
 const nextConfig = {
   webpack: (config) => {
@@ -10,6 +9,9 @@ const nextConfig = {
         loader: 'file-loader',
       },
     });
+
+    // Define alias outside of the module.rules array
+    config.resolve.alias['@'] = path.resolve(__dirname, '.');
 
     return config;
   },
