@@ -31,8 +31,12 @@ const EntForm = ({userId}) => {
     }));
   };
 
+
+
+
   const formHandler = async (e) => {
     e.preventDefault();
+
     console.log("the form data is", formData);
     try {
       const response = await fetch("/api/ideas", {
