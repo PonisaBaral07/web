@@ -3,7 +3,7 @@ import connectDB from '../../../lib/mongodb';
 import User from '../../../models/user';
 import { NextResponse } from 'next/server';
 
-export async function GET(req, {params} )
+export async function GET(req,{params} )
 {
     const id= params.id;
     console.log(id);

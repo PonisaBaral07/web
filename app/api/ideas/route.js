@@ -25,8 +25,9 @@ export async function GET(req, res)
         await connectDB();
         const ideas = await Idea.find();
         return NextResponse.json(
-            JSON.stringify(ideas),
+            ideas,
             {
+                ideas,
                 success : true,
             }
         )

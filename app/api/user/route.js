@@ -3,10 +3,9 @@ import mongoose from "mongoose";
 import User from "@/models/user"
 import { NextResponse } from "next/server";
 
-import jwt from "jsonwebtoken";
 
 export async function POST (req, res){
-    const {fname,lname,email,dob,company,job,qualification,university,password,checked,role} =  await req.json();
+    const {fname,lname,email,dob,company,job,qualification,university,password,category,role} =  await req.json();
     try{
         await connectDB();
         await User.create({
@@ -18,6 +17,7 @@ export async function POST (req, res){
             job,
             qualification,
             university,
+            category,
             password,
             role
         });
@@ -32,7 +32,26 @@ export async function POST (req, res){
     catch(err){console.log(err);}
 
 }
-// pages/api/user.js
+
+export async function GET(req, res)
+{
+    try{
+        await connectDB();
+        const user = await User.find();
+        return NextResponse.json(
+            user,
+            {
+                user,
+                success : true,
+            }
+        )
+
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+}
 
 
 

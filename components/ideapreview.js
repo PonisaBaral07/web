@@ -2,17 +2,37 @@
 import Logo from "./logo";
 import { Viewer, Worker } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
-
-// Import the styles provided by the react-pdf-viewer packages
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import Comment from "./comment";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-const Ideaview = () => {
+const Ideaview = ({ideaId}) => {
+  const [ideaData, setIdeaData] = useState([]);
+  useEffect(()=>
+  {
+    const fetchData = async(ideaId) =>
+    {
+      console.log(ideaId);
+      const response = await fetch(`http://localhost:3000/api/indidea/${ideaId}`);
+      const results = await response.json();
+      console.log(results);
+      const result = results.foundIdea;
+      console.log(result);
+      setIdeaData(result);
+
+    }
+    fetchData(ideaId);
+    console.log(ideaData)
+  },[])
     const pdfUrl = 'my.pdf';
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
   return (
     <div>
+   {ideaData.map(idea=>(
+    
+    <div key ={idea._id}>
       <div className="flex justify-center">
         <Logo />
       </div>
@@ -23,10 +43,10 @@ const Ideaview = () => {
         <div className="w-[100%]">
           {/* title */}
           <div className="font-extrabold text-2xl text-green-800">
-            Title goes on here
+            {idea.title}
           </div>
           {/* category */}
-          <div className="text-gray-400">software, computer</div>
+          <div className="text-gray-400">{idea.category}</div>
         </div>
       </div>
       {/* project team */}
@@ -37,18 +57,15 @@ const Ideaview = () => {
             Project Team
           </div>
           <div className="font-bold text-lg text-green-800 underline">
-            Sugam Gelal
+           {idea.patnername}
           </div>
           {/* Qualification */}
-          <div className="text-gray-400">computer Engineer</div>
+          <div className="text-gray-400">{idea.patnerqual} </div>
           <div className="text-gray-400">
-            Email: <span className="text-black">sugamgelal@gmail.com</span>
+            Email: <span className="text-black">{idea.patneremail}</span>
           </div>
           <div className="text-gray-400">
-            Phone: <span className="text-black">+977 9815397684</span>
-          </div>
-          <div className="text-gray-400">
-            No of idea uploaded: <span className="text-black">10</span>
+            Phone: <span className="text-black">{idea.patnerphone}</span>
           </div>
         </div>
       </div>
@@ -56,7 +73,7 @@ const Ideaview = () => {
       <div className="flex flex-col gap-4 bg-gray-50 w-[75%] md:w-[75%] p-2 m-auto rounded-sm shadow-md mt-4">
         <div className="w-[100%]">
           <div className="text-gray-400">
-            Estimated Budget: <span className="text-black">1000</span>
+            Estimated Budget: <span className="text-black">{idea.price}</span>
           </div>
         </div>
       </div>
@@ -69,37 +86,7 @@ const Ideaview = () => {
           </div>
         <div className="w-[100%]">
           <div className="text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            eu ipsum dignissim, vestibulum turpis ut, eleifend nulla. Fusce at
-            venenatis nibh. Ut eu nibh mollis, pellentesque dui ut, eleifend
-            nisl. Sed iaculis sapien eget tellus consectetur, vitae blandit
-            ligula porta. Sed ultricies leo venenatis, tempus arcu non, sagittis
-            nunc. Suspendisse eu risus metus. Phasellus venenatis, elit id
-            hendrerit imperdiet, massa mi faucibus turpis, non condimentum eros
-            nunc a augue. Suspendisse et risus justo. Suspendisse porttitor
-            tempus sem. Fusce ac elit in elit pretium vestibulum nec et ante.
-            Donec a nunc rhoncus, porta augue ac, placerat lectus. Cras
-            venenatis arcu id libero vehicula, ut hendrerit nisl pharetra.
-            Vivamus ex sapien, aliquam id tempor ac, viverra nec turpis. Sed nec
-            erat dignissim, pretium purus in, mattis ex. Fusce ac sapien
-            finibus, volutpat ipsum id, ultrices urna. Maecenas magna nibh,
-            cursus sit amet consequat sit amet, hendrerit in tellus. Donec
-            finibus eu erat vitae porttitor. Curabitur non enim non purus tempor
-            dictum id eget erat. Morbi erat sapien, pellentesque ut vehicula
-            posuere, rhoncus in turpis. Nulla ac eleifend metus, et consectetur
-            ante. Donec pulvinar pharetra felis, vitae maximus ipsum varius vel.
-            Aliquam felis orci, iaculis a sapien vitae, semper pulvinar magna.
-            Mauris justo enim, pretium porttitor eros eu, porta iaculis ante.
-            Sed tempor hendrerit magna ac dignissim. Ut nec venenatis mi,
-            pellentesque consectetur nisl. Suspendisse hendrerit sed nisl quis
-            tincidunt. Praesent non sem massa. In sed lorem placerat, ultrices
-            lectus a, consequat ex. Duis in sollicitudin tellus, ac ultrices
-            elit. Maecenas finibus urna nibh, non pharetra dolor dictum id.
-            Nullam nibh quam, vestibulum sed ante quis, mattis ullamcorper urna.
-            Duis facilisis leo vitae enim luctus accumsan. Pellentesque sit amet
-            mattis neque. Integer vestibulum tortor ac sodales rutrum. In
-            iaculis erat quis orci mattis pulvinar. Phasellus fringilla est et
-            diam mattis, ac dictum quam.
+          {idea.projectsummary}
           </div>
         </div>
       </div>
@@ -127,10 +114,9 @@ const Ideaview = () => {
 
         </div>
         </div>
-
-        <Comment/>
-      
     </div>
+  ))}
+  </div>
   );
 };
 

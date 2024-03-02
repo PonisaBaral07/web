@@ -1,67 +1,64 @@
-'use client'
+"use client";
 import Logo from "@/components/logo";
 import { useState } from "react";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    fname: '',
-    lname: '',
-    email: '',
-    dob: '',
-    qualification: '',
-    university: '',
-    password: '',
-    confirmPassword: '',
-    role: 'investor',
-    
+    fname: "",
+    lname: "",
+    email: "",
+    dob: "",
+    qualification : "",
+    university: "",
+    job: "",
+    company: "",
+    category: "",
+    password: "",
+    confirmPassword: "",
+    role: "investor",
   });
   const [passwordMatch, setPasswordMatch] = useState(true);
-  
 
   // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
   const removeCircularReferences = (object) => {
     const seen = new WeakSet();
     const replacer = (key, value) => {
-        if (typeof value === 'object' && value !== null) {
-            if (seen.has(value)) {
-                return; // If circular reference is found, return undefined
-            }
-            seen.add(value);
+      if (typeof value === "object" && value !== null) {
+        if (seen.has(value)) {
+          return; // If circular reference is found, return undefined
         }
-        return value;
+        seen.add(value);
+      }
+      return value;
     };
     return JSON.stringify(object, replacer);
-};
-
+  };
 
   // Handle form submission
   const submitHandle = async (e) => {
     e.preventDefault();
-    if(formData.password !== formData.confirmPassword)
-    {
+    if (formData.password !== formData.confirmPassword) {
       setPasswordMatch(false);
-      console.log('password wrong');
+      console.log("password wrong");
       return;
-    } 
+    }
     console.log(formData);
-    try{
+    try {
       const jsonString = removeCircularReferences(formData);
       console.log(jsonString);
-      const response = await fetch('/api/user',{
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: jsonString
+      const response = await fetch("/api/user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: jsonString,
       });
-
-    }
-    catch(e){
+    } catch (e) {
       console.log(e);
     }
   };
@@ -69,14 +66,19 @@ const Signup = () => {
     <div>
       <section className="bg-gray-50 h-full overflow-auto">
         <div className="flex justify-center">
-        <div className="block items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <div className="flex justify-center"><Logo/></div>
-          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Create an account
-              </h1>
-              <form className="space-y-4 md:space-y-6"  onSubmit={submitHandle}>
+          <div className="block items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <div className="flex justify-center">
+              <Logo />
+            </div>
+            <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+              <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                  Create an account
+                </h1>
+                <form
+                  className="space-y-4 md:space-y-6"
+                  onSubmit={submitHandle}
+                >
                   <div>
                     <label
                       htmlFor="fname"
@@ -90,7 +92,7 @@ const Signup = () => {
                       id="fname"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="name "
-                      value = {formData.fname}
+                      value={formData.fname}
                       onChange={handleChange}
                       required
                     />
@@ -108,7 +110,7 @@ const Signup = () => {
                       id="lname"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="surname "
-                      value = {formData.lname}
+                      value={formData.lname}
                       onChange={handleChange}
                       required
                     />
@@ -126,7 +128,7 @@ const Signup = () => {
                       id="email"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="name@company.com"
-                      value = {formData.email}
+                      value={formData.email}
                       onChange={handleChange}
                       required
                     />
@@ -145,7 +147,7 @@ const Signup = () => {
                       id="dob"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="name "
-                      value = {formData.dob}
+                      value={formData.dob}
                       onChange={handleChange}
                       required
                     />
@@ -164,7 +166,7 @@ const Signup = () => {
                       id="company"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="company name "
-                      value = {formData.company}
+                      value={formData.company}
                       onChange={handleChange}
                       required
                     />
@@ -183,12 +185,32 @@ const Signup = () => {
                       id="job"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="job "
-                      value = {formData.job}
+                      value={formData.job}
                       onChange={handleChange}
                       required
                     />
                   </div>
 
+                  
+                    <label
+                      htmlFor="category"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Select a Category
+                    </label>
+                    <select
+                      id="category"
+                      name="category"
+                      value={formData.category}
+                      onChange={handleChange}
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                      <option selected>Choose category</option>
+                      <option value="medical">Medical</option>
+                      <option value="Technology">Technology</option>
+                      <option value="agri">Agriculture</option>
+                      <option value="bus">Business</option>
+                    </select>
                   <div>
                     <label
                       htmlFor="password"
@@ -201,13 +223,12 @@ const Signup = () => {
                       name="password"
                       id="password"
                       placeholder="••••••••"
-                      value = {formData.password}
+                      value={formData.password}
                       onChange={handleChange}
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       required
                     />
                   </div>
-
 
                   <div>
                     <label
@@ -221,25 +242,28 @@ const Signup = () => {
                       name="confirmPassword"
                       id="confirmPassword"
                       placeholder="••••••••"
-                      value = {formData.confirmPassword}
+                      value={formData.confirmPassword}
                       onChange={handleChange}
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       required
                     />
                   </div>
+
                   {!passwordMatch && (
-                        <p className="text-red-500 text-sm">Passwords do not match</p>
-                      )}
-                      <div className=""></div>
+                    <p className="text-red-500 text-sm">
+                      Passwords do not match
+                    </p>
+                  )}
+                  <div className=""></div>
                   <div className="flex items-start">
                     <div className="flex items-center h-5">
                       <input
-                      name="term"
+                        name="term"
                         id="terms"
                         aria-describedby="terms"
                         type="checkbox"
-                        value = {formData.term}
-                      onChange={handleChange}
+                        value={formData.term}
+                        onChange={handleChange}
                         className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
                         required
                       />
@@ -275,9 +299,9 @@ const Signup = () => {
                     </a>
                   </p>
                 </form>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
     </div>

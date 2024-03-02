@@ -1,8 +1,12 @@
-import EditProfilePopup from '../../components/editprofilepopup'
+import Ideaslist from '../../components/algorithm'
+import { GetUserId } from "@/components/cookie";
 
 const Page = () => {
+  const userId = GetUserId();
   return (
-    <div><EditProfilePopup/></div>
+    <div>
+      <Ideaslist userId={userId}/>
+    </div>
   )
 }
 
