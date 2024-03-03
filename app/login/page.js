@@ -3,7 +3,6 @@ import Logo from "@/components/logo";
 import { useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
-import jwt from "jsonwebtoken";
 import { jwtDecode } from "jwt-decode";
 
 const Login = () => {

@@ -3,6 +3,7 @@ import { GetUserId } from "@/components/cookie";
 import EntdashboardContent from "@/components/entdashboardcontent";
 import Footer from "@/components/footer";
 import Logo from "@/components/logo";
+import Signout from "../../components/logout";
 
 const Entdashboard = async () => {
   const userId = GetUserId();
@@ -64,6 +65,7 @@ const Entdashboard = async () => {
             >
               signout
             </button> */}
+            <Signout/>
           </div>
           {/* main section of the dashbaord  */}
           <div className="flex flex-col bg-white w-2/3 rounded-md h-[60vh] p-4">

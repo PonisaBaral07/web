@@ -94,7 +94,7 @@ const Ideaview = ({ideaId}) => {
 
       {/* pdf viewer */}
 
-      <div className="flex flex-col gap-4 bg-gray-50 w-[75%] md:w-[75%] p-2 m-auto rounded-sm shadow-md mt-4">
+      {/* <div className="flex flex-col gap-4 bg-gray-50 w-[75%] md:w-[75%] p-2 m-auto rounded-sm shadow-md mt-4">
       <div className="font-bold text-lg text-green-800 underline ">
             Project proposal
           </div>
@@ -113,7 +113,7 @@ const Ideaview = ({ideaId}) => {
         </Worker>
 
         </div>
-        </div>
+        </div> */}
     </div>
   ))}
   </div>

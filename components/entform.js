@@ -199,7 +199,7 @@ const EntForm = ({ userId }) => {
             </div>
           </div>
           {/* project image  */}
-          <div className="p-2 ">
+          {/* <div className="p-2 ">
             <label className="font-bold text-lg" htmlFor="file_input">
               Upload img
             </label>
@@ -212,7 +212,7 @@ const EntForm = ({ userId }) => {
               type="file"
             />
           </div>
-          {/* files */}
+          files
 
           <div className="p-2 ">
             <label className="font-bold text-lg" htmlFor="file_input">
@@ -226,7 +226,7 @@ const EntForm = ({ userId }) => {
               onChange={onEdit}
               type="file"
             />
-          </div>
+          </div> */}
           {/* {button} */}
           <div className="flex justify-center">
             <button className="bg-green-800 hover:bg-green-900 rounded-md p-2 text-white font-bold">
