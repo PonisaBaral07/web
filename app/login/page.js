@@ -9,7 +9,11 @@ const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+const resetForm = ()=>
+{
+  setEmail("");
+  setPassword("");
+}
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -33,6 +37,8 @@ const Login = () => {
         } catch (err) {
           console.error("Error decoding token:", err);
         toast.error("LOGIN FAILED");
+        resetForm();
+  
         }
       } else {
         toast.error("Login failed");

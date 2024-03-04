@@ -1,8 +1,10 @@
 'use client'
 import Logo from "@/components/logo";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Sign = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     fname: '',
     lname: '',
@@ -39,7 +41,10 @@ const Sign = () => {
     };
     return JSON.stringify(object, replacer);
 };
-
+const resetForm = ()=>
+  {
+    router.push('/login')
+  }
 
   // Handle form submission
   const submitHandle = async (e) => {
@@ -59,7 +64,7 @@ const Sign = () => {
         headers: { 'Content-Type': 'application/json'},
         body: jsonString
       });
-
+      resetForm();
     }
     catch(e){
       console.log(e);

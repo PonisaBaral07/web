@@ -14,7 +14,7 @@ export default function Signout() {
   }
 
   return (
-    <button onClick={handleSignout}>
+    <button onClick={handleSignout} className='bg-red-800 text-white p-2 rounded-md'>
       Sign Out 
     </button>
   );

@@ -2,7 +2,7 @@
 const About = () => {
   return (
     <section className="text-gray-600 body-font" id= "about">
-        <h1 className="title-font text-center sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+        <h1 className="title-font test text-center sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
             About us
           </h1>
       <div className="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">

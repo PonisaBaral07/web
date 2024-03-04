@@ -1,11 +1,19 @@
 'use client'
 import { useState } from "react";
+import { ToastBar, Toaster, toast } from "react-hot-toast";
 
 
 const Contact =  () => {
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [message,setMessage] = useState("");
+  const resetForm = ()=>
+  {
+    toast.success("Message sent successfully");
+    setName("");
+    setEmail("");
+    setMessage("");
+  }
   const onHnadle = async (e)=>
   {
     e.preventDefault();
@@ -18,7 +26,7 @@ const Contact =  () => {
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({name, email, message})
       });
-
+      resetForm();
     }
     catch(e){
       console.log(e);
@@ -26,6 +34,7 @@ const Contact =  () => {
   }
   return (
     <section className="text-gray-600 body-font relative" id ="contact">
+      <Toaster/>
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">

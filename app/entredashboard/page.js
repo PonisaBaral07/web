@@ -10,6 +10,7 @@ const Entdashboard = async () => {
   console.log(`the user is is ${userId}`);
   
     const response = await fetch(`http://localhost:3000/api/${userId}`);
+    console.log(response);
     const json = await response.json();
     const responseIdeas = await fetch(`http://localhost:3000/api/ideas/${userId}`);
     const responseIdea = await responseIdeas.json();
@@ -34,16 +35,13 @@ const Entdashboard = async () => {
             <div className="flex items-center flex-col  ">
               <img
                 className="flex h-20 w-20 rounded-full mt-8 justify-center"
-                src="https://unsplash.com/photos/a-woman-with-long-hair-and-a-black-shirt-Ud4bLEy4gC0"
+                src="/Sample_User_Icon.png"
                 alt="Image Description"
               />
               <div className="font-bold text-lg text-center">
               {json.foundUser.fname}{" "} {json.foundUser.lname}
               </div>
               
-              <div className="p-1 border border-green-900 rounded-lg text-sm cursor-pointer hover:font-bold mb-2">
-                Edit
-              </div>
             </div>
             {/* other profile details */}
             <div className="font-bold">

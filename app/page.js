@@ -10,11 +10,11 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <div>
-      <Navbar/>
-      <Hero/>
+      <Navbar id="navbar"/>
+      <Hero id ="hero"/>
       <div className=''><About id ="about"/></div>
       <Contact id = "contact"/>
-      <Footer/>
+      <Footer id ="footer"/>
     </div>
   )
 }

@@ -1,8 +1,11 @@
 "use client";
 import Logo from "@/components/logo";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
 
 const EntForm = ({ userId }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     createdBy: userId, // initialize userId from the query parameter
     title: "",
@@ -36,13 +39,19 @@ const EntForm = ({ userId }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      toast.success("idea uploaded successfully");
+      resetForm();
     } catch (err) {
       console.log(err);
     }
   };
-
+  const resetForm =()=>
+  {
+    router.push('/entredashboard');
+  }
   return (
     <div>
+      <Toaster/>
       <form onSubmit={formHandler}>
         <div className="flex justify-center">
           <Logo />
@@ -235,6 +244,7 @@ const EntForm = ({ userId }) => {
           </div>
         </div>
       </form>
+    
     </div>
   );
 };
