@@ -73,7 +73,7 @@ const Ideaslist = ({ userId }) => {
     const mag1 = magnitude(vector1);
     const mag2 = magnitude(vector2);
     if (mag1 === 0 || mag2 === 0) return 0; // Avoid division by zero
-    return dotProd / (mag1 * mag2);
+    return dotProd / (mag1 * mag2); 
   };
 
   const vectorizeAttributes = (investor, idea) => {
@@ -99,7 +99,7 @@ const Ideaslist = ({ userId }) => {
     const { investorVector, ideaVector } = vectorizeAttributes(investor, idea);
     return cosineSimilarity(investorVector, ideaVector);
   };
-console.log(recommendations);
+  
   return (
     <div>
         {recommendations.map((idea) => (
